@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Differential Geometry of Plane Curves</title>
+    
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    
+    <!-- MathJax -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                macros: {
+                    pp: "\\mathbf{p}",
+                    TT: "\\mathbf{T}",
+                    NN: "\\mathbf{N}",
+                    kappa: "\\kappa"
+                }
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    
+    <style>
+        /* Minimal dark theme */
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .hero.is-primary {
+            background: #2d3748;
+        }
+        
+        .hero.is-primary .title,
+        .hero.is-primary .subtitle {
+            color: #ffffff;
+        }
+        
+        .content {
+            color: #ffffff;
+        }
+        
+        .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+            color: #ffffff;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .box {
+            background-color: #2d3748;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .notification {
+            background-color: #2d3748;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .math-display {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: #2d3748;
+            border-radius: 8px;
+            text-align: center;
+            color: #ffffff;
+        }
+        
+        .section-title {
+            color: #ffffff;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+        
+        .footer {
+            background-color: #1a1a1a;
+            color: #cccccc;
+        }
+        
+        /* Text styling with good contrast */
+        strong {
+            font-weight: 700;
+            color: #ffffff;
+        }
+        
+        em {
+            font-style: italic;
+            color: #ffffff;
+        }
+        
+        p {
+            color: #ffffff;
+        }
+        
+        ul, li {
+            color: #ffffff;
+        }
+        
+        /* Remove Bulma's default spacing */
+        .section {
+            padding: 3rem 1.5rem;
+        }
+        
+        .container {
+            max-width: 800px;
+        }
+        
+        /* Clean typography */
+        .title {
+            font-weight: 400;
+        }
+        
+        .title.is-1 {
+            font-size: 2.5rem;
+        }
+        
+        .title.is-2 {
+            font-size: 2rem;
+        }
+        
+        .title.is-3 {
+            font-size: 1.5rem;
+        }
+        
+        .title.is-4 {
+            font-size: 1.25rem;
+        }
+        
+        .title.is-5 {
+            font-size: 1.125rem;
+        }
+        
+        /* Simple lists */
+        ul {
+            margin-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* MathJax styling */
+        .MathJax {
+            color: #ffffff !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1 has-text-centered">
+                    Differential Geometry of Plane Curves
+                </h1>
+                <h2 class="subtitle is-4 has-text-centered">
+                    A Comprehensive Study of Curves in the Plane
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8 is-offset-2">
+                    
+                    <!-- Introduction to Plane Curves -->
+                    <div class="content">
+                        <h2 class="title is-2 section-title">1. Introduction to Plane Curves</h2>
+                        
+                        <div class="box">
+                            <h3 class="title is-4">Definition</h3>
+                            <p>A <strong>plane curve</strong> is a continuous mapping from an interval $I \subseteq \mathbb{R}$ to the plane $\mathbb{R}^2$. We typically represent a plane curve parametrically as:</p>
+                            <div class="math-display">
+                                $$\pp(t) = (x(t), y(t))$$
+                            </div>
+                            <p>where $t \in I$ is the parameter and $x(t)$, $y(t)$ are continuous functions.</p>
+                        </div>
+
+                        <h3 class="title is-3">Basic Properties</h3>
+                        <p>Plane curves can be characterized by several fundamental properties:</p>
+                        
+                        <div class="box">
+                            <h4 class="title is-5">Smoothness</h4>
+                            <p>A curve is <strong>smooth</strong> if the functions $x(t)$ and $y(t)$ are differentiable and the derivative $\pp'(t) = (x'(t), y'(t))$ is never zero (i.e., $\pp'(t) \neq \mathbf{0}$ for all $t$).</p>
+                        </div>
+
+                        <div class="box">
+                            <h4 class="title is-5">Regularity</h4>
+                            <p>A curve is <strong>regular</strong> if it is smooth and the tangent vector $\pp'(t)$ has non-zero magnitude for all $t$ in the domain.</p>
+                            <p><strong>Why is regularity important?</strong></p>
+                            <ul>
+                                <li>Ensures well-defined tangent directions at every point</li>
+                                <li>Enables computation of geometric quantities like curvature</li>
+                                <li>Prevents singularities (cusps, stops) that would break our analysis</li>
+                                <li>Essential for defining unit tangent vectors and normal vectors</li>
+                                <li>Required for meaningful arc length parameterization</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="title is-3">Examples of Plane Curves</h3>
+                        
+                        <div class="box">
+                            <h4 class="title is-5">Circle</h4>
+                            <p>A circle of radius $R$ centered at the origin:</p>
+                            <div class="math-display">
+                                $$\pp(t) = (R\cos t, R\sin t), \quad t \in [0, 2\pi]$$
+                            </div>
+                            <div style="text-align: center; margin: 1.5rem 0;">
+                                <iframe src="figures/circle.html" width="600" height="400" frameborder="0" style="border-radius: 8px;"></iframe>
+                            </div>
+                            <p><strong>Properties:</strong></p>
+                            <ul>
+                                <li>Tangent vector: $\pp'(t) = (-R\sin t, R\cos t)$</li>
+                                <li>Speed: $|\pp'(t)| = R$ (constant)</li>
+                                <li>This is a regular curve</li>
+                            </ul>
+                        </div>
+
+                        <div class="box">
+                            <h4 class="title is-5">Ellipse</h4>
+                            <p>An ellipse with semi-axes $a$ and $b$:</p>
+                            <div class="math-display">
+                                $$\pp(t) = (a\cos t, b\sin t), \quad t \in [0, 2\pi]$$
+                            </div>
+                            <div style="text-align: center; margin: 1.5rem 0;">
+                                <iframe src="figures/ellipse.html" width="600" height="400" frameborder="0" style="border-radius: 8px;"></iframe>
+                            </div>
+                            <p><strong>Properties:</strong></p>
+                            <ul>
+                                <li>Tangent vector: $\pp'(t) = (-a\sin t, b\cos t)$</li>
+                                <li>Speed: $|\pp'(t)| = \sqrt{a^2\sin^2 t + b^2\cos^2 t}$</li>
+                                <li>When $a = b$, this reduces to a circle</li>
+                            </ul>
+                        </div>
+
+                        <div class="box">
+                            <h4 class="title is-5">Parabola</h4>
+                            <p>A parabola opening upward:</p>
+                            <div class="math-display">
+                                $$\pp(t) = (t, t^2), \quad t \in \mathbb{R}$$
+                            </div>
+                            <div style="text-align: center; margin: 1.5rem 0;">
+                                <iframe src="figures/parabola.html" width="600" height="400" frameborder="0" style="border-radius: 8px;"></iframe>
+                            </div>
+                            <p><strong>Properties:</strong></p>
+                            <ul>
+                                <li>Tangent vector: $\pp'(t) = (1, 2t)$</li>
+                                <li>Speed: $|\pp'(t)| = \sqrt{1 + 4t^2}$</li>
+                                <li>This is a regular curve for all $t$</li>
+                            </ul>
+                        </div>
+
+                        <div class="box">
+                            <h4 class="title is-5">Non-Regular Curve Example</h4>
+                            <p>A <strong>semicubical parabola</strong> (also called a cusp curve):</p>
+                            <div class="math-display">
+                                $$\pp(t) = (t^2, t^3), \quad t \in \mathbb{R}$$
+                            </div>
+                            <div style="text-align: center; margin: 1.5rem 0;">
+                                <iframe src="figures/cusp.html" width="600" height="400" frameborder="0" style="border-radius: 8px;"></iframe>
+                            </div>
+                            <p><strong>Properties:</strong></p>
+                            <ul>
+                                <li>Tangent vector: $\pp'(t) = (2t, 3t^2)$</li>
+                                <li>At $t = 0$: $\pp'(0) = (0, 0)$ - <strong>not regular!</strong></li>
+                                <li>The curve has a <strong>cusp</strong> at the origin</li>
+                                <li>This is smooth but not regular at $t = 0$</li>
+                            </ul>
+                            <p><strong>Why this matters:</strong> At the cusp, we cannot define a tangent direction, unit tangent vector, or compute curvature. This demonstrates why the regularity condition is essential for differential geometric analysis.</p>
+                        </div>
+
+                        <div class="box">
+                            <h4 class="title is-5">Cycloid</h4>
+                            <p>A <strong>cycloid</strong> is the curve traced by a point on the rim of a rolling circle:</p>
+                            <div class="math-display">
+                                $$\pp(t) = R(t - \sin t, 1 - \cos t)$$
+                            </div>
+                            <div style="text-align: center; margin: 1.5rem 0;">
+                                <iframe src="figures/cycloid.html" width="600" height="400" frameborder="0" style="border-radius: 8px;"></iframe>
+                            </div>
+                            <p><strong>Properties:</strong></p>
+                            <ul>
+                                <li>Tangent vector: $\pp'(t) = R(1 - \cos t, \sin t)$</li>
+                                <li>At $t = 2\pi n$: $\pp'(t) = (0, 0)$ - <strong>cusps!</strong></li>
+                                <li>The curve has periodic cusps every $2\pi$</li>
+                                <li>This is smooth but not regular at cusp points</li>
+                            </ul>
+                            <p><strong>Applications:</strong> The cycloid appears in gear design, pendulum clocks (tautochrone property), and optimal path problems in physics.</p>
+                        </div>
+
+                        <div class="box">
+                            <h4 class="title is-5">Key Formulas</h4>
+                            <p>For a parametric curve $\pp(t) = (x(t), y(t))$:</p>
+                            <ul>
+                                <li><strong>Tangent vector:</strong> $\pp'(t) = (x'(t), y'(t))$</li>
+                                <li><strong>Speed:</strong> $|\pp'(t)| = \sqrt{(x'(t))^2 + (y'(t))^2}$</li>
+                                <li><strong>Unit tangent vector:</strong> $\TT(t) = \frac{\pp'(t)}{|\pp'(t)|}$</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Differential Geometry of Plane Curves</strong> - A comprehensive study of curves in the plane.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
